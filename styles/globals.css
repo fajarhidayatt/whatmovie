@@ -1,9 +1,42 @@
+:root {
+  --primaryColor: rgb(111, 87, 235);
+  --secondaryColor: rgb(248, 249, 250);
+  --bgColor: rgb(255, 255, 255);
+  --textColor: rgb(0, 0, 0);
+  --scrollColor: rgb(219, 219, 219);
+  --thumbColor: rgb(168, 168, 168);
+  --scrollBarColor: rgb(241, 241, 241);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--bgColor);
+}
+
+.dark-mode {
+  --primaryColor: rgb(111, 87, 235);
+  --bgColor: rgb(30, 29, 43);
+  --textColor: rgb(255, 255, 255);
+  --secondaryColor: rgb(37, 39, 54);
+  --scrollColor: rgb(37, 39, 54);
+  --thumbColor: rgb(30, 29, 43);
+  --scrollBarColor: rgb(37, 39, 54);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--textColor);
 }
 
 a {
@@ -11,6 +44,32 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+.container-xxxl {
+  max-width: 1440px;
+  padding: 0 5%;
+  margin: auto;
+}
+
+.text-purple {
+  color: var(--primaryColor);
+}
+
+.footer {
+  background-color: var(--secondaryColor);
+  color: var(--textColor);
+}
+
+.footer .fa-heart {
+  color: rgb(255, 0, 0);
+}
+
+::-webkit-scrollbar {
+  background-color: var(--scrollBarColor);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--thumbColor);
+  border-radius: 40px;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
 }

@@ -1,0 +1,22 @@
+.section-trending .button-wrapper {
+  border: 1px solid var(--primaryColor);
+  border-radius: 40px;
+}
+
+.section-trending .button-wrapper .btn:focus {
+  box-shadow: 0 0 0 3px rgba(111, 87, 235, 0.3);
+}
+
+.section-trending .button-wrapper .btn-trending {
+  display: block;
+  background-color: var(--secondaryColor);
+  color: var(--textColor);
+  border-radius: 40px;
+}
+
+.section-trending .button-wrapper .btn-active {
+  background-color: rgba(105, 77, 248, 0.5);
+  box-shadow: 0 0 5px rgba(111, 87, 235, 0.5);
+  color: var(--primaryColor);
+  z-index: 9;
+}

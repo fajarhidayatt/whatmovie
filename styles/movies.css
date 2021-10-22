@@ -1,0 +1,10 @@
+.section-movies select {
+  max-width: 375px;
+  border-radius: 5px;
+}
+
+.section-movies select:focus {
+  border-color: rgba(111, 87, 235, 0.7);
+  box-shadow: 0 0 0 3px rgba(111, 87, 235, 0.3);
+  outline: 0 none;
+}

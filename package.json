@@ -9,14 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.23.0",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
     "@types/react": "17.0.29",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "eslint": "7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "11.1.2",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "typescript": "4.4.4"
   }
 }

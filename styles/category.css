@@ -1,0 +1,27 @@
+.section-category .button-wrapper {
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px 5px;
+}
+
+.section-category .button-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.section-category .button-wrapper .btn {
+  display: inline-block;
+  background-color: var(--secondaryColor);
+  color: var(--textColor);
+  border-radius: 40px;
+  margin-right: 15px;
+}
+
+.section-category .button-wrapper .btn:focus {
+  box-shadow: 0 0 0 3px rgba(111, 87, 235, 0.3);
+}
+
+.section-category .button-wrapper .btn-active {
+  background-color: rgba(105, 77, 248, 0.4);
+  box-shadow: 0 0 5px rgba(111, 87, 235, 0.4);
+  color: var(--primaryColor);
+}
