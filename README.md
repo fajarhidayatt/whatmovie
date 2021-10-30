@@ -12,6 +12,15 @@ Website ini dibangun menggunakan beberapa teknologi di dalamnya, antara lain:
 - [Bootstrap](https://getbootstrap.com/)
 - [Axios](https://github.com/axios/axios)
 
+## API
+
+Website ini menggunakan API dari [themoviedb.org](https://www.themoviedb.org/documentation/api), dan pastinya membutuhkan `api-key` agar API pada website ini bisa berjalan. Kamu bisa mendaftar terlebih dahulu di [themoviedb.org](https://www.themoviedb.org/documentation/api) untuk mendapatkan `api-key`. Setelah mendapat api key, kamu bisa memasukan `api-key` tersebut di `env`
+
+```env
+NEXT_PUBLIC_KEY="api_key=<your api_key>&language=en-US"
+# <your api_key> diganti dengan api-key milik kamu
+```
+
 ## Development
 
 Jika kamu ingin mencoba untuk melakukan proses development, pastikan perangkat kamu telah terinstal [nodejs](https://nodejs.org/en/).
