@@ -4,8 +4,11 @@ import { DetailMovieTypes } from '../../../services/data_types';
 import MovieItem from '../../molecules/MovieItem';
 import MovieNotFound from './MovieNotFound';
 
-export default function PopularMovies() {
-  const [keyword, setKeyword] = useState('');
+interface PopularMoviesProps {
+  keyword: string;
+}
+
+export default function ResultMovies({ keyword }: PopularMoviesProps) {
   const [movies, setMovies] = useState([]);
 
   const getResultMoviesAPI = useCallback(async (query) => {
@@ -16,10 +19,8 @@ export default function PopularMovies() {
   }, []);
 
   useEffect(() => {
-    const keywordValue = sessionStorage.getItem('keyword')!;
-    setKeyword(keywordValue);
-    getResultMoviesAPI(keywordValue);
-  }, []);
+    getResultMoviesAPI(keyword);
+  }, [keyword]);
 
   useEffect(() => {
     setTimeout(() => {
