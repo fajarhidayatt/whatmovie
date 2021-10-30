@@ -1,0 +1,3 @@
+NEXT_PUBLIC_IMG="https://image.tmdb.org/t/p"
+NEXT_PUBLIC_KEY="api_key=<your api_key>&language=en-US"
+NEXT_PUBLIC_API="https://api.themoviedb.org/3"
