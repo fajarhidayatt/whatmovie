@@ -26,9 +26,11 @@ export default function DetailMovie(props: DetailMovieProps) {
   };
 
   const getVideoTrailerAPI = useCallback(async (idm) => {
-    const response: any = await getVideoTrailer(idm);
-    const filterTrailer = response.results.filter((result: any) => result.type === 'Trailer');
-    setVideo(filterTrailer[0]);
+    if (idm) {
+      const response: any = await getVideoTrailer(idm);
+      const filterTrailer = response.results.filter((result: any) => result.type === 'Trailer');
+      setVideo(filterTrailer[0]);
+    }
   }, []);
 
   const getSimilarMoviesAPI = useCallback(async (idm) => {
@@ -58,7 +60,7 @@ export default function DetailMovie(props: DetailMovieProps) {
             </button>
             <h5>Video Trailer</h5>
             <iframe
-              src={`https://www.youtube-nocookie.com/embed/${video.key}?version=3&enablejsapi=1`}
+              src={`https://www.youtube-nocookie.com/embed/${video?.key}?version=3&enablejsapi=1`}
               title="YouTube video player"
               frameBorder="0"
               allowFullScreen
