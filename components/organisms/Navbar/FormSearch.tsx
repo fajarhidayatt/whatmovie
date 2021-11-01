@@ -8,6 +8,9 @@ export default function FormSearch() {
   const onSubmit = (event: any) => {
     if (!keyword) {
       event.preventDefault();
+    } else {
+      event.preventDefault();
+      router.push(`/search/${keyword}`);
     }
   };
 
@@ -18,7 +21,7 @@ export default function FormSearch() {
   };
 
   return (
-    <form action={`/search/${keyword}`} method="post" onSubmit={onSubmit}>
+    <form onSubmit={onSubmit}>
       <div className="d-flex">
         <input
           className="form-control me-2"
