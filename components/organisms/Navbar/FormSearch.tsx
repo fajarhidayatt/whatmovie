@@ -14,8 +14,10 @@ export default function FormSearch() {
     }
   };
 
-  const onClick = () => {
-    if (keyword) {
+  const onClick = (event: any) => {
+    if (!keyword) {
+      event.preventDefault();
+    } else {
       router.push(`/search/${keyword}`);
     }
   };
@@ -35,7 +37,6 @@ export default function FormSearch() {
           className="btn btn-outline-purple"
           type="button"
           onClick={onClick}
-          disabled={!keyword}
         >
           <i className="fa fa-search" aria-hidden />
         </button>
