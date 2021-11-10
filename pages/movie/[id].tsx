@@ -1,47 +1,28 @@
-import { useCallback, useEffect, useState } from 'react';
-import DetailMovieContent from '../../components/organisms/DetailMovieContent';
+import SectionHeader from '../../components/organisms/DetailMovieContent/SectionHeader';
+import SectionInfo from '../../components/organisms/DetailMovieContent/SectionInfo';
+import SectionRecom from '../../components/organisms/DetailMovieContent/SectionRecom';
+import VideoTrailer from '../../components/organisms/DetailMovieContent/VideoTrailer';
 import Footer from '../../components/organisms/Footer';
 import Navbar from '../../components/organisms/Navbar';
-import { getDetailMovie, getSimilarMovies, getVideoTrailer } from '../../services/data_api';
+import {
+  getCredits, getDetailMovie, getSimilarMovies, getVideoTrailer,
+} from '../../services/data_api';
 import { DetailMovieTypes } from '../../services/data_types';
 
 interface DetailMovieProps {
   movie: DetailMovieTypes;
+  similarMovies: DetailMovieTypes[];
+  credits: any;
+  trailer: {
+    key: string;
+  }
 }
 
 export default function DetailMovie(props: DetailMovieProps) {
-  const { movie } = props;
-  const [similarMovies, setSimilarMovie] = useState([]);
-  const [video, setVideo] = useState({
-    name: '',
-    key: '',
-  });
-
+  const {
+    movie, similarMovies, trailer, credits,
+  } = props;
   const rootImg = process.env.NEXT_PUBLIC_IMG;
-
-  const onClick = () => {
-    document.querySelector('.overlay')?.classList.remove('active');
-    const videoTrailer = document.querySelector<any>('.video-trailer')!;
-    videoTrailer.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
-  };
-
-  const getVideoTrailerAPI = useCallback(async (idm) => {
-    if (idm) {
-      const response: any = await getVideoTrailer(idm);
-      const filterTrailer = response.results.filter((result: any) => result.type === 'Trailer');
-      setVideo(filterTrailer[0]);
-    }
-  }, []);
-
-  const getSimilarMoviesAPI = useCallback(async (idm) => {
-    const response: any = await getSimilarMovies(idm);
-    setSimilarMovie(response.results);
-  }, []);
-
-  useEffect(() => {
-    getVideoTrailerAPI(movie.id);
-    getSimilarMoviesAPI(movie.id);
-  }, []);
 
   return (
     <>
@@ -50,23 +31,15 @@ export default function DetailMovie(props: DetailMovieProps) {
       </div>
       <div className="detail-movie mb-5">
         <div className="section-backdrop">
-          <img src={`${rootImg}/w1280/${movie.backdrop_path}`} alt={`backdrop ${movie.title}`} />
+          <img src={`${rootImg}/w1280/${movie?.backdrop_path}`} alt={`backdrop ${movie?.title}`} />
         </div>
-        <DetailMovieContent movie={movie} similarMovies={similarMovies} />
+        <div className="section-content">
+          <SectionHeader movie={movie} />
+          <SectionInfo movie={movie} credits={credits} />
+          <SectionRecom similarMovies={similarMovies} />
+        </div>
         <div className="overlay">
-          <div className="trailer-wrapper">
-            <button type="button" onClick={onClick}>
-              <i className="fa fa-times" />
-            </button>
-            <h5>Video Trailer</h5>
-            <iframe
-              src={`https://www.youtube-nocookie.com/embed/${video?.key}?version=3&enablejsapi=1`}
-              title="YouTube video player"
-              frameBorder="0"
-              allowFullScreen
-              className="video-trailer"
-            />
-          </div>
+          <VideoTrailer trailer={trailer} />
         </div>
       </div>
       <Footer />
@@ -74,19 +47,27 @@ export default function DetailMovie(props: DetailMovieProps) {
   );
 }
 
-interface GetServerSideProps {
+interface GetStaticProps {
     params: {
         id: number;
     }
 }
 
-export async function getServerSideProps({ params }: GetServerSideProps) {
+export async function getServerSideProps({ params }: GetStaticProps) {
   const { id } = params;
-  const response = await getDetailMovie(id);
+
+  const movie = await getDetailMovie(id);
+  const videosMovie:any = await getVideoTrailer(id);
+  const trailer = videosMovie?.results?.filter((result: any) => result.type === 'Trailer')[0] || null;
+  const similarMovies:any = await getSimilarMovies(id);
+  const credits = await getCredits(id);
 
   return {
     props: {
-      movie: response,
+      movie,
+      trailer,
+      credits,
+      similarMovies: similarMovies.results,
     },
   };
 }
