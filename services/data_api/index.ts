@@ -27,26 +27,32 @@ export async function getSimilarMovies(idm: number) {
   return data;
 }
 
-export async function getCategoryMovies(idc: number) {
-  const axiosResponse = await axios.get(`${rootAPI}/discover/movie?${keyAPI}&with_genres=${idc}`);
+export async function getCategoryMovies(idc: number, page = 1) {
+  const axiosResponse = await axios.get(`${rootAPI}/discover/movie?${keyAPI}&with_genres=${idc}&page=${page}`);
   const { data } = axiosResponse;
   return data;
 }
 
-export async function getTrendingMovies(param: string) {
-  const axiosResponse = await axios.get(`${rootAPI}/trending/movie/${param}?${keyAPI}`);
+export async function getTrendingMovies(param: string, page = 1) {
+  const axiosResponse = await axios.get(`${rootAPI}/trending/movie/${param}?${keyAPI}&page=${page}`);
   const { data } = axiosResponse;
   return data;
 }
 
-export async function getMovies(param: string) {
-  const axiosResponse = await axios.get(`${rootAPI}/movie/${param}?${keyAPI}`);
+export async function getMovies(param: string, page = 1) {
+  const axiosResponse = await axios.get(`${rootAPI}/movie/${param}?${keyAPI}&page=${page}`);
   const { data } = axiosResponse;
   return data;
 }
 
 export async function getResultMovies(query: string) {
   const axiosResponse = await axios.get(`${rootAPI}/search/movie?${keyAPI}&query=${query}`);
+  const { data } = axiosResponse;
+  return data;
+}
+
+export async function getCredits(idm: number) {
+  const axiosResponse = await axios.get(`${rootAPI}/movie/${idm}/credits?${keyAPI}`);
   const { data } = axiosResponse;
   return data;
 }
