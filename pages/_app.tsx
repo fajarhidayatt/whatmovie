@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app';
 import '../styles/globals.css';
 import '../styles/navbar.css';
+import '../styles/footer.css';
 import '../styles/discover.css';
 import '../styles/category.css';
 import '../styles/movies.css';
@@ -9,8 +10,16 @@ import '../styles/detail_movie.css';
 import '../styles/movie_item.css';
 import '../styles/not_found.css';
 import Head from 'next/head';
+import { Router } from 'next/router';
+import 'nprogress/nprogress.css';
+import NProgress from 'nprogress';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  NProgress.configure({ showSpinner: false });
+  Router.events.on('routeChangeStart', () => NProgress.start());
+  Router.events.on('routeChangeComplete', () => NProgress.done());
+  Router.events.on('routeChangeError', () => NProgress.done());
+
   return (
     <>
       <Head>
