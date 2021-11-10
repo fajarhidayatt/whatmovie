@@ -32,7 +32,7 @@
 .navbar .btn-mode:hover {
   color: rgb(255, 255, 255);
   background-color: var(--primaryColor);
-  box-shadow: 0 0 10px rgba(111, 87, 235, 0.7);
+  box-shadow: 0 0 10px rgb(111, 87, 235);
 }
 
 .navbar .navbar-toggler {
@@ -48,11 +48,11 @@
 .navbar .btn-mode {
   width: 30px;
   height: 30px;
+  color: var(--primaryColor);
+  background-color: transparent;
   outline: none;
   border: none;
   margin-left: 10px;
-  background-color: var(--bgColor);
-  color: var(--primaryColor);
   border: 1px solid var(--primaryColor);
   border-radius: 50%;
   display: grid;
