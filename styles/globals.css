@@ -17,7 +17,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background-color: var(--bgColor);
+  background: var(--bgColor) !important;
 }
 
 .dark-mode {
@@ -54,15 +54,6 @@ a {
   color: var(--primaryColor);
 }
 
-.footer {
-  background-color: var(--secondaryColor);
-  color: var(--textColor);
-}
-
-.footer .fa-heart {
-  color: rgb(255, 0, 0);
-}
-
 ::-webkit-scrollbar {
   background-color: var(--scrollBarColor);
 }
@@ -72,4 +63,30 @@ a {
   border-radius: 40px;
   border: 4px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
+}
+
+.view-all {
+  color: var(--textColor);
+}
+
+.pagination .page-link {
+  color: var(--primaryColor);
+}
+
+.pagination .active .page-link {
+  background-color: var(--primaryColor) !important;
+}
+
+.pagination .active .page-link:focus {
+  border-color: rgba(111, 87, 235, 0.7);
+  box-shadow: 0 0 0 3px rgba(111, 87, 235, 0.3);
+  outline: none;
+}
+
+.pagination-horizontal {
+  overflow: auto;
+}
+
+.pagination-horizontal::-webkit-scrollbar {
+  display: none;
 }
