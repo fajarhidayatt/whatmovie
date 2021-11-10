@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import { getCategories, getCategoryMovies } from '../../../services/data_api';
 import { CategoryTypes, DetailMovieTypes } from '../../../services/data_types';
@@ -29,8 +30,11 @@ export default function CategoryMovies() {
 
   return (
     <div className="section-category container-xxxl mt-0 mt-lg-5">
-      <div className="mb-3">
+      <div className="mb-3 d-flex justify-content-between align-items-center">
         <h3 className="fw-bold">Browse by category</h3>
+        <Link href={`/movies/category?idc=${id}&cat=${active}&page=1`}>
+          <a className="view-all">View All</a>
+        </Link>
       </div>
       <div className="button-wrapper mb-4">
         {categories.map((category: CategoryTypes) => (
