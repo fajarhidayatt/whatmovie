@@ -32,7 +32,9 @@ export default function DiscoverItem(props: DiscoverItemProps) {
   const year = new Date(data.release_date).getFullYear();
   const categories = data.genres.map((genre: any) => genre.name).splice(0, 2).join(' | ');
 
-  return (
+  return !data.id ? (
+    <div />
+  ) : (
     <div className="movie-item">
       <Link href={`/movie/${id}`}>
         <a>
