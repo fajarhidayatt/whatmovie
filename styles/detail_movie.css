@@ -1,6 +1,4 @@
 .detail-movie {
-  max-width: 1440px;
-  margin: auto;
   min-height: 100vh;
 }
 
@@ -25,8 +23,10 @@
 }
 
 .detail-movie .section-content {
-  background-color: var(--bgColor);
+  max-width: 1440px;
+  margin: auto;
   color: var(--textColor);
+  background-color: var(--bgColor);
   margin-top: -200px;
   border-radius: 30px 30px 0 0;
   position: relative;
@@ -57,7 +57,54 @@
 }
 
 .detail-movie .section-content .section-info {
+  display: grid;
+  grid-template-columns: 100%;
   text-align: justify;
+}
+
+.detail-movie .section-content .section-info .info-crew,
+.detail-movie .section-content .section-info .info-movie {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.crew h5 {
+  font-size: 1em;
+}
+
+.crew p {
+  font-size: 0.8em;
+}
+
+.cast-wrapper {
+  overflow: auto;
+  white-space: nowrap;
+  display: flex;
+}
+
+.cast-wrapper::-webkit-scrollbar {
+  background-color: transparent;
+  height: 20px;
+}
+
+.cast-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--scrollColor);
+}
+
+.cast-box {
+  display: inline-block;
+  max-width: 90px;
+  white-space: initial;
+  font-size: 0.8rem;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.img-cast {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .overlay {
@@ -66,10 +113,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
   display: none;
   place-items: center;
-  padding: 5%;
 }
 
 .overlay.active {
@@ -79,8 +125,8 @@
 .overlay .trailer-wrapper {
   position: relative;
   background-color: rgba(0, 0, 0);
-  width: 100%;
-  max-width: 755px;
+  width: 90%;
+  max-width: 950px;
 }
 
 .overlay .trailer-wrapper button {
@@ -100,10 +146,9 @@
 }
 
 .overlay .trailer-wrapper .video-trailer {
-  width: 100%;
-  max-width: 560px;
-  height: 200px;
   display: none;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .overlay.active .trailer-wrapper .video-trailer {
@@ -165,9 +210,9 @@
     width: 20px;
   }
 
-  .overlay .trailer-wrapper .video-trailer {
-    max-width: 805px;
-    height: 318px;
+  .detail-movie .section-content .section-info .info-crew,
+  .detail-movie .section-content .section-info .info-movie {
+    grid-template-columns: repeat(3, 33.333%);
   }
 }
 
@@ -192,9 +237,9 @@
     font-size: 2em;
   }
 
-  .overlay .trailer-wrapper .video-trailer {
-    max-width: 755px;
-    height: 375px;
+  .detail-movie .section-content .section-info .info-crew,
+  .detail-movie .section-content .section-info .info-movie {
+    grid-template-columns: repeat(4, 25%);
   }
 }
 
@@ -209,8 +254,26 @@
     margin: -100px 30px 0 0;
   }
 
-  .overlay .trailer-wrapper .video-trailer {
-    max-width: 755px;
-    height: 418px;
+  .detail-movie .section-content .section-info {
+    grid-template-columns: 75% 20%;
+    grid-template-rows: auto auto;
+    column-gap: 50px;
+  }
+
+  .crew h5 {
+    font-size: 1.25em;
+  }
+
+  .crew p {
+    font-size: 1em;
+  }
+
+  .detail-movie .section-content .section-info .info-crew {
+    grid-area: 1/1/2/2;
+  }
+
+  .detail-movie .section-content .section-info .info-movie {
+    grid-area: 1/2/3/3;
+    grid-template-columns: 1fr;
   }
 }
