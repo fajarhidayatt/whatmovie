@@ -30,6 +30,7 @@
   border-radius: 20px;
 }
 
+.movie-item:hover .movie-info h5,
 .movie-item:hover .movie-info h6 {
   color: var(--primaryColor);
 }
