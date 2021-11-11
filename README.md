@@ -1,6 +1,6 @@
 # WhatMovie
 
-![Design preview WhatMovie](.whatmovie-preview.png)
+![Design preview WhatMovie](./whatmovie-preview.png)
 
 ## Description
 
