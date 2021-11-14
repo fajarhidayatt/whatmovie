@@ -12,7 +12,8 @@ export default function CategoryMovies() {
 
   const getCategoriesAPI = useCallback(async () => {
     const response: any = await getCategories();
-    setCategories(response.genres.splice(0, 10));
+    const genres = response.genres.filter((genre: CategoryTypes) => genre.name !== 'Documentary' && genre.name !== 'Romance' && genre.name !== 'Drama');
+    setCategories(genres);
   }, []);
 
   const getCategoryMoviesAPI = useCallback(async (idc) => {

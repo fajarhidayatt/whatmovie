@@ -117,7 +117,7 @@ export async function getServerSideProps({ query }: GetServerSideProps) {
   const p = Number(page);
 
   const dataCategories: any = await getCategories();
-  const categories = dataCategories?.genres?.splice(0, 10);
+  const categories = dataCategories?.genres?.filter((genre: CategoryTypes) => genre.name !== 'Documentary' && genre.name !== 'Romance' && genre.name !== 'Drama');
 
   const dataMovies: any = await getCategoryMovies(id, p);
   const movies = dataMovies.results;
